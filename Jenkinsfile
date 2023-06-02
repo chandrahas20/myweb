@@ -1,5 +1,6 @@
-try{
-	node{
+
+	node('master') 
+          {
 	    properties([parameters([choice(choices: ['master', 'dev', 'qa', 'staging'], description: 'Choose branch to build and deploy', name: 'gitBranch')]), pipelineTriggers([pollSCM('')])])
     stage('Git Checkout'){
 		git credentialsId: 'github', 
